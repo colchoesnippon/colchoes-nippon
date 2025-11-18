@@ -57,9 +57,13 @@ const Hero: React.FC = () => {
           className="mt-16 md:mt-24 w-full max-w-5xl relative"
         >
            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl shadow-indigo-900/20 border border-white/10 bg-neutral-900">
+               {/* 
+                  ATENÇÃO: Se você quiser usar sua imagem específica, substitua a URL abaixo pelo caminho da sua imagem.
+                  Exemplo: src="/assets/minha-foto-colchao.jpg"
+               */}
                <img 
-                src="https://picsum.photos/1200/600?grayscale&blur=2" 
-                alt="Tecnologia do Colchão" 
+                src="https://images.unsplash.com/photo-1617325247661-675ab4b64ae4?q=80&w=2071&auto=format&fit=crop" 
+                alt="Tecnologia do Colchão - Design Premium" 
                 className="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-[2s]"
                />
                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
