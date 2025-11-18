@@ -3,12 +3,13 @@ import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from
 import { 
   Zap, Smartphone, Music, 
   ShieldCheck, Mic, BatteryCharging, 
-  Check, ChevronRight, Rotate3d, ArrowDown, Layers
+  Check, ChevronRight, Rotate3d, ArrowDown, Layers, ChevronDown, Info
 } from 'lucide-react';
 
 const PremiumPage: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', whatsapp: '' });
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
+  const [expandedSpec, setExpandedSpec] = useState<number | null>(null);
   
   // Gallery State
   const [activeTab, setActiveTab] = useState(0);
@@ -32,14 +33,16 @@ const PremiumPage: React.FC = () => {
       const formElement = document.getElementById('premium-offer-form');
       if (!formElement) return;
       
-      const heroHeight = window.innerHeight * 0.5; 
+      // Lower threshold to 100px so it appears almost immediately on mobile
+      const threshold = 100; 
       const formRect = formElement.getBoundingClientRect();
       
-      // Show if scrolled past hero AND form is not yet fully visible in viewport
-      const isPastHero = window.scrollY > heroHeight;
-      const isFormVisible = formRect.top < window.innerHeight - 100; // 100px buffer
+      // Show if scrolled past threshold AND form is not yet fully visible in viewport
+      const isPastThreshold = window.scrollY > threshold;
+      // On mobile, hide when the top of the form section is near the middle/top of screen
+      const isFormVisible = formRect.top < (window.innerHeight * 0.8); 
 
-      if (isPastHero && !isFormVisible) {
+      if (isPastThreshold && !isFormVisible) {
         setShowFloatingCTA(true);
       } else {
         setShowFloatingCTA(false);
@@ -82,6 +85,10 @@ const PremiumPage: React.FC = () => {
     window.open(`https://wa.me/554334720040?text=${encodeURIComponent(text)}`, '_blank');
   };
 
+  const toggleSpec = (index: number) => {
+    setExpandedSpec(expandedSpec === index ? null : index);
+  };
+
   const features = [
     { icon: <Zap className="text-amber-400" />, title: "Energia Quântica", desc: "Restabelecimento do equilíbrio energético." },
     { icon: <Music className="text-blue-400" />, title: "AudioVibe Bluetooth", desc: "Imersão sonora via condução no colchão." },
@@ -90,11 +97,20 @@ const PremiumPage: React.FC = () => {
   ];
 
   const specs = [
-    "Super Pillow Top Único", "Pastilhas de Magnético", "Pastilhas de Infravermelho Longo", 
-    "Pastilhas EVI Diamond", "Pastilhas X-Ions", "Densidade Progressiva Inteligente", 
-    "Tecido Malha 400 Fios", "Linho Bouclê Premium", "Suporta 440kg (Casal)",
-    "10 Anos de Garantia", "Ozonioterapia", "Cromoterapia",
-    "4 Motores Big Premium", "Display LCD Completo"
+    { title: "Super Pillow Top Único", detail: "Camada superior de conforto extremo com espuma HR de alta resiliência, proporcionando a sensação de 'abraço' sem perder a firmeza ortopédica necessária para a coluna." },
+    { title: "Pastilhas de Magnético", detail: "Imãs de Ferrite de Bário que emitem ondas magnéticas de 800 Gauss, simulando o campo magnético da Terra e melhorando a circulação sanguínea." },
+    { title: "Pastilhas Infravermelho Longo", detail: "Tecnologia biocerâmica que emite ondas de 4 a 14 mícrons, idênticas aos raios solares da manhã, auxiliando na desintoxicação celular e síntese de Vitamina D." },
+    { title: "Pastilhas EVI Diamond", detail: "Tecnologia exclusiva de Energia Vibracional de Impulso que atua no relaxamento muscular profundo e alívio de tensões nervosas." },
+    { title: "Pastilhas X-Ions", detail: "Emissão de íons negativos que ajudam a neutralizar os radicais livres, promovendo uma sensação de bem-estar e ar puro durante o sono." },
+    { title: "Densidade Progressiva", detail: "Arquitetura de camadas (Rabatan + Espumas D33/D45) que alinha a coluna vertebral independente do peso do usuário." },
+    { title: "Tecido Malha 400 Fios", detail: "Revestimento nobre, hipoalergênico e com toque de seda, garantindo frescor e suavidade no contato com a pele." },
+    { title: "Linho Bouclê Premium", detail: "Acabamento lateral em tecido de alta decoração, trazendo sofisticação e durabilidade estética superior para o seu quarto." },
+    { title: "Suporta 440kg (Casal)", detail: "Estrutura reforçada desenvolvida para suportar 220kg por pessoa sem deformar, mantendo a integridade por décadas." },
+    { title: "10 Anos de Garantia", detail: "Certificado de garantia estendida contra deformações estruturais e defeitos de fabricação." },
+    { title: "Ozonioterapia", detail: "Sistema opcional que libera ozônio para higienização e eliminação de ácaros e fungos do ambiente de sono." },
+    { title: "Cromoterapia", detail: "Luzes LED terapêuticas integradas para indução do sono e relaxamento mental através das cores." },
+    { title: "4 Motores Big Premium", detail: "Motores de alta potência e baixo ruído, posicionados estrategicamente para massagear do pescoço às pernas." },
+    { title: "Display LCD Completo", detail: "Controle visual intuitivo para configurar intensidade, tempo, tipo de massagem e despertar." }
   ];
 
   const galleryItems = [
@@ -352,11 +368,44 @@ const PremiumPage: React.FC = () => {
                
                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                   {specs.map((spec, i) => (
-                    <div key={i} className="flex items-start p-4 border-b border-zinc-900 hover:bg-white/5 transition-colors rounded-lg">
-                      <div className="mt-1 mr-3">
-                        <div className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]"></div>
+                    <div 
+                      key={i} 
+                      onClick={() => toggleSpec(i)}
+                      className={`flex flex-col p-4 border-b hover:bg-white/5 transition-colors rounded-lg cursor-pointer ${expandedSpec === i ? 'bg-white/5 border-amber-500/30' : 'border-zinc-900'}`}
+                    >
+                      <div className="flex items-start justify-between w-full">
+                        <div className="flex items-center">
+                          <div className="mr-3 flex-shrink-0">
+                            <div className={`w-2 h-2 rounded-full transition-all duration-300 ${expandedSpec === i ? 'bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.8)] scale-125' : 'bg-zinc-600'}`}></div>
+                          </div>
+                          <span className={`font-medium transition-colors ${expandedSpec === i ? 'text-white' : 'text-gray-300'}`}>
+                            {spec.title}
+                          </span>
+                        </div>
+                        <ChevronDown 
+                          size={16} 
+                          className={`text-gray-500 transition-transform duration-300 ${expandedSpec === i ? 'rotate-180 text-amber-500' : ''}`} 
+                        />
                       </div>
-                      <span className="text-gray-300 font-medium">{spec}</span>
+                      
+                      <AnimatePresence>
+                        {expandedSpec === i && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pt-3 pl-5 text-sm text-gray-400 leading-relaxed border-l border-white/10 ml-1 mt-1">
+                              <div className="flex items-start gap-2">
+                                <Info size={14} className="mt-0.5 text-amber-500/70 flex-shrink-0" />
+                                {spec.detail}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   ))}
                </div>
@@ -425,7 +474,7 @@ const PremiumPage: React.FC = () => {
          </div>
       </section>
 
-      {/* Floating Sticky CTA for Mobile/Tablet */}
+      {/* Floating Sticky CTA for Mobile/Tablet - HIGH Z-INDEX */}
       <AnimatePresence>
         {showFloatingCTA && (
           <motion.div
@@ -433,16 +482,16 @@ const PremiumPage: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className="fixed bottom-6 left-4 right-4 z-50 flex justify-center pointer-events-none"
+            className="fixed bottom-6 left-4 right-4 z-[100] flex justify-center pointer-events-none"
           >
-             <div className="bg-zinc-900/95 backdrop-blur-xl border border-amber-500/30 p-2 pr-3 pl-6 rounded-full shadow-2xl shadow-amber-900/50 flex items-center justify-between gap-6 pointer-events-auto max-w-md w-full ring-1 ring-white/10">
+             <div className="bg-zinc-900/95 backdrop-blur-xl border border-amber-500/30 p-2 pr-3 pl-6 rounded-full shadow-2xl shadow-amber-900/50 flex items-center justify-between gap-3 md:gap-6 pointer-events-auto max-w-md w-full ring-1 ring-white/10">
                <div className="flex flex-col">
                   <span className="text-amber-500 text-[10px] font-bold uppercase tracking-wider leading-tight">Oferta Limitada</span>
                   <span className="text-white font-bold text-sm">Premium 40cm</span>
                </div>
                <button 
                   onClick={scrollToForm}
-                  className="relative overflow-hidden bg-[#F59E0B] text-black font-bold py-3 px-6 rounded-full text-sm flex items-center gap-2 shadow-[0_0_15px_rgba(245,158,11,0.5)] hover:shadow-[0_0_25px_rgba(245,158,11,0.8)] transition-all transform hover:scale-105 active:scale-95"
+                  className="relative overflow-hidden bg-[#F59E0B] text-black font-bold py-2.5 px-5 rounded-full text-sm flex items-center gap-2 shadow-[0_0_15px_rgba(245,158,11,0.5)] hover:shadow-[0_0_25px_rgba(245,158,11,0.8)] transition-all transform hover:scale-105 active:scale-95 flex-shrink-0"
                >
                   <span className="absolute inset-0 bg-white/20 animate-pulse"></span>
                   <span className="relative flex items-center gap-2">Ver Preço <ArrowDown size={16} /></span>
