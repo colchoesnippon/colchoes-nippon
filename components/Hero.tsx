@@ -36,7 +36,9 @@ const Hero: React.FC = () => {
           className="flex flex-col md:flex-row gap-6 items-center"
         >
           <a 
-            href="https://wa.me/5511999999999" 
+            href="https://wa.me/554334720040" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#25D366] text-black font-medium px-8 py-4 rounded-full hover:bg-[#20bd5a] transition-all flex items-center gap-2 text-lg"
           >
             Receber Preços Exclusivos <ChevronRight size={18} />

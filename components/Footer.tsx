@@ -10,7 +10,9 @@ const Footer: React.FC = () => {
             Seu novo padrão <br /> de sono começa agora.
           </h2>
           <a 
-            href="https://wa.me/5511999999999" 
+            href="https://wa.me/554334720040" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-8 text-blue-400 text-xl hover:underline flex items-center gap-2"
           >
             Falar com um especialista <ChevronRight size={20} />

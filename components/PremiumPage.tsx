@@ -1,13 +1,14 @@
-import React, { useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { 
   Zap, Smartphone, Music, 
   ShieldCheck, Mic, BatteryCharging, 
-  Check, ChevronRight, Star, Layers, Rotate3d
+  Check, ChevronRight, Rotate3d, ArrowDown, Layers
 } from 'lucide-react';
 
 const PremiumPage: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', whatsapp: '' });
+  const [showFloatingCTA, setShowFloatingCTA] = useState(false);
   
   // Gallery State
   const [activeTab, setActiveTab] = useState(0);
@@ -21,6 +22,37 @@ const PremiumPage: React.FC = () => {
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
   const brightness = useTransform(mouseYSpring, [-0.5, 0.5], [1.1, 0.9]);
+  
+  // FIX: Hook must be called at top level, not inside conditional render
+  const imgFilter = useTransform(brightness, b => `brightness(${b}) grayscale(100%)`);
+
+  // Scroll detection for Floating CTA
+  useEffect(() => {
+    const handleScroll = () => {
+      const formElement = document.getElementById('premium-offer-form');
+      if (!formElement) return;
+      
+      const heroHeight = window.innerHeight * 0.5; 
+      const formRect = formElement.getBoundingClientRect();
+      
+      // Show if scrolled past hero AND form is not yet fully visible in viewport
+      const isPastHero = window.scrollY > heroHeight;
+      const isFormVisible = formRect.top < window.innerHeight - 100; // 100px buffer
+
+      if (isPastHero && !isFormVisible) {
+        setShowFloatingCTA(true);
+      } else {
+        setShowFloatingCTA(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToForm = () => {
+    document.getElementById('premium-offer-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!galleryRef.current) return;
@@ -47,7 +79,7 @@ const PremiumPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = `Olá, tenho interesse na *Linha Premium 40cm*.\nNome: ${formData.name}\nWhatsApp: ${formData.whatsapp}\nGostaria de receber a tabela de valores e condições.`;
-    window.open(`https://wa.me/5511999999999?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/554334720040?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const features = [
@@ -85,15 +117,15 @@ const PremiumPage: React.FC = () => {
         img: "https://picsum.photos/1200/800?grayscale&random=12" 
     },
     { 
-        id: 'tech',
+        id: 'interface',
         title: "Interface Smart", 
-        desc: "Controle total na lateral do colchão.",
+        desc: "Tecnologia embarcada com display LCD e App.",
         img: "https://picsum.photos/1200/800?grayscale&random=13" 
     }
   ];
 
   return (
-    <div className="pt-36 md:pt-48 bg-black min-h-screen overflow-x-hidden">
+    <div className="pt-36 md:pt-48 bg-black min-h-screen overflow-x-hidden relative">
       
       {/* Hero Premium */}
       <section className="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden pb-20">
@@ -125,7 +157,7 @@ const PremiumPage: React.FC = () => {
             <img 
               src="https://picsum.photos/1200/800?grayscale&random=99" 
               alt="Colchão Premium 40cm" 
-              className="w-full h-full object-cover opacity-80 mask-image-gradient"
+              className="w-full h-full object-cover opacity-80"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
             
@@ -161,9 +193,11 @@ const PremiumPage: React.FC = () => {
                       : 'bg-transparent border-white/5 hover:bg-white/5'
                     }`}
                   >
-                    <span className={`text-sm font-bold mb-1 ${activeTab === index ? 'text-white' : 'text-gray-400'}`}>
-                      {item.title}
-                    </span>
+                    <div className="flex items-center gap-2 mb-1">
+                        <span className={`text-sm font-bold ${activeTab === index ? 'text-white' : 'text-gray-400'}`}>
+                        {item.title}
+                        </span>
+                    </div>
                     <span className="text-xs text-gray-500 leading-tight hidden md:block">
                       {item.desc}
                     </span>
@@ -187,43 +221,49 @@ const PremiumPage: React.FC = () => {
                    }}
                    className="w-full h-full rounded-3xl bg-zinc-900 border border-white/10 shadow-2xl relative overflow-hidden"
                  >
-                    <motion.div 
-                        key={activeTab}
-                        initial={{ opacity: 0, scale: 1.1 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="w-full h-full relative"
-                    >
-                        <motion.img 
-                           style={{ filter: useTransform(brightness, b => `brightness(${b}) grayscale(100%)`) }}
-                           src={galleryItems[activeTab].img} 
-                           alt={galleryItems[activeTab].title}
-                           className="w-full h-full object-cover"
-                        />
-                        
-                        {/* Floating UI Elements in 3D Space */}
+                    <AnimatePresence mode='wait'>
                         <motion.div 
-                           style={{ translateZ: 40 }}
-                           className="absolute bottom-8 left-8 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10"
+                            key={activeTab}
+                            initial={{ opacity: 0, scale: 1.05 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="w-full h-full relative"
                         >
-                           <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Vista Selecionada</p>
-                           <p className="text-white text-lg font-semibold">{galleryItems[activeTab].title}</p>
+                           
+                            <motion.img 
+                                style={{ filter: imgFilter }}
+                                src={galleryItems[activeTab].img} 
+                                alt={galleryItems[activeTab].title}
+                                className="w-full h-full object-cover"
+                            />
+                            
+                            {/* Floating UI Elements in 3D Space */}
+                            <motion.div 
+                                style={{ translateZ: 40 }}
+                                className="absolute bottom-8 left-8 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 pointer-events-none"
+                            >
+                                <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Vista Selecionada</p>
+                                <p className="text-white text-lg font-semibold">{galleryItems[activeTab].title}</p>
+                            </motion.div>
+
+                            <motion.div 
+                                style={{ translateZ: 20 }}
+                                className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 to-transparent pointer-events-none mix-blend-overlay"
+                            />
+                              
                         </motion.div>
+                    </AnimatePresence>
 
-                        <motion.div 
-                           style={{ translateZ: 20 }}
-                           className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 to-transparent pointer-events-none mix-blend-overlay"
-                        />
-                    </motion.div>
-
-                    {/* Shine Effect */}
+                    {/* Shine Effect (Only for Images) */}
                     <motion.div 
                         style={{ 
-                           x: useTransform(x, [-0.5, 0.5], ["-100%", "100%"]),
-                           opacity: useTransform(y, [-0.5, 0.5], [0, 0.3])
+                        x: useTransform(x, [-0.5, 0.5], ["-100%", "100%"]),
+                        opacity: useTransform(y, [-0.5, 0.5], [0, 0.3])
                         }}
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent skew-x-12 pointer-events-none"
                     />
+                    
                  </motion.div>
                  
                  <p className="text-center text-xs text-gray-600 mt-4 flex items-center justify-center gap-1">
@@ -301,8 +341,8 @@ const PremiumPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Detailed List */}
-      <section className="py-24 bg-black border-t border-white/5">
+      {/* Detailed List & Form */}
+      <section className="py-24 bg-black border-t border-white/5" id="premium-offer-form">
          <div className="container mx-auto px-6 flex flex-col md:flex-row gap-16">
             <div className="flex-1">
                <div className="flex items-center gap-3 mb-8">
@@ -366,9 +406,14 @@ const PremiumPage: React.FC = () => {
                     
                     <button 
                       type="submit"
-                      className="w-full mt-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold py-4 rounded-xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
+                      className="group relative w-full mt-4 bg-gradient-to-r from-amber-500 to-amber-600 text-black font-bold py-4 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] transition-all duration-500 transform hover:-translate-y-1"
                     >
-                      Solicitar Tabela de Preços <ChevronRight size={18}/>
+                      {/* Shine Effect Layer */}
+                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                      
+                      <span className="relative flex items-center justify-center gap-2">
+                         Solicitar Tabela de Preços <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform"/>
+                      </span>
                     </button>
                   </form>
                   
@@ -379,6 +424,34 @@ const PremiumPage: React.FC = () => {
             </div>
          </div>
       </section>
+
+      {/* Floating Sticky CTA for Mobile/Tablet */}
+      <AnimatePresence>
+        {showFloatingCTA && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="fixed bottom-6 left-4 right-4 z-50 flex justify-center pointer-events-none"
+          >
+             <div className="bg-zinc-900/95 backdrop-blur-xl border border-amber-500/30 p-2 pr-3 pl-6 rounded-full shadow-2xl shadow-amber-900/50 flex items-center justify-between gap-6 pointer-events-auto max-w-md w-full ring-1 ring-white/10">
+               <div className="flex flex-col">
+                  <span className="text-amber-500 text-[10px] font-bold uppercase tracking-wider leading-tight">Oferta Limitada</span>
+                  <span className="text-white font-bold text-sm">Premium 40cm</span>
+               </div>
+               <button 
+                  onClick={scrollToForm}
+                  className="relative overflow-hidden bg-[#F59E0B] text-black font-bold py-3 px-6 rounded-full text-sm flex items-center gap-2 shadow-[0_0_15px_rgba(245,158,11,0.5)] hover:shadow-[0_0_25px_rgba(245,158,11,0.8)] transition-all transform hover:scale-105 active:scale-95"
+               >
+                  <span className="absolute inset-0 bg-white/20 animate-pulse"></span>
+                  <span className="relative flex items-center gap-2">Ver Preço <ArrowDown size={16} /></span>
+               </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 };

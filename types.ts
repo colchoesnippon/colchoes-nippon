@@ -18,11 +18,8 @@ export interface ProductSpec {
 export interface QuizData {
   size: string;
   baseType: string;
-  headboard: string;
   comfortProfile: string;
   needs: string;
-  lineOfInterest: string;
-  budget: string;
   name: string;
   whatsapp: string;
 }

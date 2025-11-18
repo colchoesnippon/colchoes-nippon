@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
             onClick={() => scrollToSection('quiz')}
             className="bg-white text-black px-4 py-1.5 rounded-full text-xs font-medium hover:bg-gray-200 transition-all"
            >
-            Diagnóstico
+            Ver Preços
            </button>
            <Menu className="w-5 h-5 text-gray-300 md:hidden" />
         </div>
