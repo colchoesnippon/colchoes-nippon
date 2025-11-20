@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 const PremiumPage: React.FC = () => {
-  const [formData, setFormData] = useState({ name: '', whatsapp: '' });
+  const [formData, setFormData] = useState({ name: '', whatsapp: '', size: 'Casal 138x188' });
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
   const [expandedSpec, setExpandedSpec] = useState<number | null>(null);
   
@@ -75,13 +75,13 @@ const PremiumPage: React.FC = () => {
     y.set(0);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Olá, tenho interesse na *Linha Premium 40cm*.\nNome: ${formData.name}\nWhatsApp: ${formData.whatsapp}\nGostaria de receber a tabela de valores e condições.`;
+    const text = `Olá, tenho interesse na *Linha Premium 40cm*.\n\n*Medida Desejada:* ${formData.size}\n*Nome:* ${formData.name}\n*WhatsApp:* ${formData.whatsapp}\n\nGostaria de receber a tabela de valores e condições.`;
     window.open(`https://wa.me/554334720040?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -428,6 +428,21 @@ const PremiumPage: React.FC = () => {
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Selecione o Tamanho</label>
+                      <select
+                        name="size"
+                        value={formData.size}
+                        onChange={handleInputChange}
+                        className="w-full bg-black border border-zinc-700 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-amber-500 transition-all cursor-pointer appearance-none"
+                      >
+                        <option value="Casal 138x188">Casal 138x188</option>
+                        <option value="Queen 158x198">Queen 158x198</option>
+                        <option value="King 193x203">King 193x203</option>
+                        <option value="Solteiro 88x188">Solteiro 88x188</option>
+                        <option value="Sob Medida">Sob Medida</option>
+                      </select>
+                    </div>
                     <div>
                       <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Nome Completo</label>
                       <input 
