@@ -7,25 +7,25 @@ const features = [
     title: "Energia Magnética",
     desc: "Um campo de força invisível de 800 Gauss que restaura o equilíbrio bioelétrico do seu corpo enquanto você dorme.",
     icon: <Zap size={40} />,
-    img: "https://picsum.photos/1000/1000?random=10&grayscale"
+    img: "https://colchoesnippon.com.br/wp-content/uploads/2025/11/news-16.png"
   },
   {
     title: "Infravermelho Longo",
     desc: "Tecnologia que simula os raios solares benéficos da manhã, auxiliando na síntese de Vitamina D e desintoxicação celular.",
     icon: <Waves size={40} />,
-    img: "https://picsum.photos/1000/1000?random=11&grayscale"
+    img: "https://colchoesnippon.com.br/wp-content/uploads/2025/11/depositphotos_26073829-stock-photo-free-happy-woman-enjoying-sunset-transformed.jpeg"
   },
   {
     title: "Massagem Bioquântica",
     desc: "Até 9.999 ciclos de vibromassagem inteligente. Relaxe a musculatura profunda e elimine o estresse acumulado.",
     icon: <Activity size={40} />,
-    img: "https://picsum.photos/1000/1000?random=12&grayscale"
+    img: "https://colchoesnippon.com.br/wp-content/uploads/2025/11/efeitos-da-massagem-sobre-o-corpo-cursos-cpt.jpg"
   },
   {
     title: "Densidade Progressiva",
     desc: "Camadas de espuma de alta resiliência projetadas ortopedicamente para alinhar a coluna cervical e lombar.",
     icon: <Layers size={40} />,
-    img: "https://picsum.photos/1000/1000?random=13&grayscale"
+    img: "https://colchoesnippon.com.br/wp-content/uploads/2025/11/postura-durante-o-sono.jpg"
   }
 ];
 

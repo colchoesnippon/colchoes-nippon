@@ -36,7 +36,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
         "Suporta 440kg (Casal)"
       ],
       highlight: true,
-      img: "https://picsum.photos/800/600?random=1",
+      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/09/colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
       color: "from-amber-700/20 to-amber-900/5",
       borderColor: "border-amber-500/30"
     },
@@ -53,7 +53,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
         "Suporta 440kg (Casal)"
       ],
       highlight: false,
-      img: "https://picsum.photos/800/600?random=2",
+      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/09/diamond-colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
       color: "from-slate-700/20 to-slate-900/5",
       borderColor: "border-white/10"
     },
@@ -70,7 +70,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
         "Suporta 320kg (Casal)"
       ],
       highlight: false,
-      img: "https://picsum.photos/800/600?random=3",
+      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/09/plus-colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
       color: "from-zinc-700/20 to-zinc-900/5",
       borderColor: "border-white/10"
     },
@@ -87,7 +87,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
         "Suporta 280kg (Casal)"
       ],
       highlight: false,
-      img: "https://picsum.photos/800/600?random=4",
+      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/09/american-colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
       color: "from-stone-700/20 to-stone-900/5",
       borderColor: "border-white/10"
     },
@@ -104,7 +104,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
         "Suporta 240kg (Casal)"
       ],
       highlight: false,
-      img: "https://picsum.photos/800/600?random=5",
+      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/11/linha-smart-colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
       color: "from-gray-700/20 to-gray-900/5",
       borderColor: "border-white/10"
     }

@@ -59,23 +59,11 @@ const Hero: React.FC = () => {
           className="mt-16 md:mt-24 w-full max-w-5xl relative"
         >
            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl shadow-indigo-900/20 border border-white/10 bg-neutral-900">
-               {/* 
-                  ATENÇÃO: Se você quiser usar sua imagem específica, substitua a URL abaixo pelo caminho da sua imagem.
-                  Exemplo: src="/assets/minha-foto-colchao.jpg"
-               */}
                <img 
-                src="https://images.unsplash.com/photo-1617325247661-675ab4b64ae4?q=80&w=2071&auto=format&fit=crop" 
+                src="https://colchoesnippon.com.br/wp-content/uploads/2025/11/seu-colchao-terapeutico-personalizado-colchoes-nipponflex-magnetico-massageador.jpg" 
                 alt="Tecnologia do Colchão - Design Premium" 
-                className="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-[2s]"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"
                />
-               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-               
-               <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 text-left">
-                   <div className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-xs font-medium text-white mb-2">
-                       Tecnologia 2025
-                   </div>
-                   <h3 className="text-2xl md:text-3xl font-semibold text-white">Design Premium</h3>
-               </div>
            </div>
         </motion.div>
       </div>

@@ -171,7 +171,7 @@ const PremiumPage: React.FC = () => {
             className="relative w-full max-w-4xl mx-auto aspect-[16/7] md:aspect-[16/6] rounded-2xl overflow-hidden shadow-2xl shadow-amber-900/10 group"
           >
             <img 
-              src="https://picsum.photos/1200/800?grayscale&random=99" 
+              src="https://colchoesnippon.com.br/wp-content/uploads/2025/10/sonolife-colchao-nippon-flex-qual-preco-magnetico-massageador-evolurion-fir-casal-king-fabrica.jpg" 
               alt="Colchão Premium 40cm" 
               className="w-full h-full object-cover opacity-80"
             />
