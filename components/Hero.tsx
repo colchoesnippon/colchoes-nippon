@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
         >
            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl shadow-indigo-900/20 border border-white/10 bg-neutral-900">
                <img 
-                src="https://colchoesnippon.com.br/wp-content/uploads/2025/11/seu-colchao-terapeutico-personalizado-colchoes-nipponflex-magnetico-massageador.jpg" 
+                src="https://colchoesnippon.com.br/wp-content/uploads/2025/11/sleep-evolution-smart-colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg" 
                 alt="Tecnologia do Colchão - Design Premium" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"
                />

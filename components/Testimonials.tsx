@@ -9,7 +9,8 @@ const reviews = [
     location: "São Paulo, SP",
     text: "Eu sofria com dores na lombar há anos. Depois de 3 semanas com o Nippon Premium, acordo sem dor nenhuma. O acabamento é impecável, parece item de decoração.",
     date: "Há 2 semanas",
-    stars: 5
+    stars: 5,
+    img: "https://colchoesnippon.com.br/wp-content/uploads/2025/10/18-cliente-satisfeito-colchao-magnetico-massageador-nippon-flex-preco-casal.jpg" // Bedroom/Mattress context
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ const reviews = [
     location: "Curitiba, PR",
     text: "O investimento vale cada centavo. A função de massagem com calor (infravermelho) é relaxante demais após o trabalho. Atendimento nota 10 da equipe.",
     date: "Há 1 mês",
-    stars: 5
+    stars: 5,
+    img: "https://colchoesnippon.com.br/wp-content/uploads/2025/04/12-cliente-satisfeito-colchao-magnetico-massageador-nippon-flex-preco-casal.jpg" // Bedroom context
   },
   {
     id: 3,
@@ -25,7 +27,8 @@ const reviews = [
     location: "Belo Horizonte, MG",
     text: "Como ortopedista, sou cético com promessas milagrosas, mas a densidade progressiva deste colchão é real. O alinhamento da coluna é perfeito. Recomendo.",
     date: "Há 3 dias",
-    stars: 5
+    stars: 5,
+    img: "https://colchoesnippon.com.br/wp-content/uploads/2025/01/02-cliente-satisfeito-colchao-magnetico-massageador-nippon-flex-preco-casal.jpg" // Bedroom context
   },
   {
     id: 4,
@@ -33,7 +36,8 @@ const reviews = [
     location: "Rio de Janeiro, RJ",
     text: "Compramos a linha Diamond. O sistema individual de massagem salvou nosso casamento (risos), cada um controla o seu lado. Muito silencioso.",
     date: "Há 2 meses",
-    stars: 5
+    stars: 5,
+    img: "https://colchoesnippon.com.br/wp-content/uploads/2025/04/09-cliente-satisfeito-colchao-magnetico-massageador-nippon-flex-preco-casal.jpg" // Bedroom context
   },
   {
     id: 5,
@@ -41,7 +45,8 @@ const reviews = [
     location: "Brasília, DF",
     text: "Estava em dúvida entre marcas, mas o acabamento da Nippon é superior. O tecido é fresco e muito macio. A entrega foi rápida e montaram tudo.",
     date: "Há 1 semana",
-    stars: 5
+    stars: 5,
+    img: "https://colchoesnippon.com.br/wp-content/uploads/2025/10/21-cliente-satisfeito-colchao-magnetico-massageador-nippon-flex-preco-casal.jpg" // Bedroom context
   }
 ];
 
@@ -117,20 +122,33 @@ const Testimonials: React.FC = () => {
               >
                 <Quote className="absolute top-8 right-8 text-zinc-800 fill-zinc-800" size={40} />
                 
+                {/* Stars */}
                 <div className="flex gap-1 mb-4">
                    {[...Array(5)].map((_, i) => (
                      <Star key={i} size={16} className={`${i < review.stars ? 'text-amber-500 fill-amber-500' : 'text-gray-600'}`} />
                    ))}
                 </div>
 
-                <p className="text-gray-300 text-lg leading-relaxed mb-8 flex-grow">
+                {/* Text */}
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
                   "{review.text}"
                 </p>
 
-                <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-black flex items-center justify-center text-sm font-bold text-white">
-                    {review.name.charAt(0)}
+                {/* Large Product Image */}
+                <div className="w-full h-56 rounded-2xl overflow-hidden mb-6 border border-white/5 shadow-lg relative group/img cursor-pointer">
+                  <div className="absolute inset-0 bg-black/20 group-hover/img:bg-transparent transition-colors duration-300" />
+                  <img 
+                    src={review.img} 
+                    alt={`Foto do cliente ${review.name}`} 
+                    className="w-full h-full object-cover transform group-hover/img:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] text-white uppercase font-bold tracking-wider">
+                    Foto Real
                   </div>
+                </div>
+
+                {/* Footer info */}
+                <div className="mt-auto pt-4 border-t border-white/5">
                   <div>
                     <h4 className="text-white font-medium flex items-center gap-2">
                       {review.name} 
