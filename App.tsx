@@ -6,6 +6,7 @@ import Testimonials from './components/Testimonials';
 import TechScroll from './components/TechScroll';
 import ComparisonTable from './components/ComparisonTable';
 import Quiz from './components/Quiz';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import PremiumPage from './components/PremiumPage';
 
@@ -33,6 +34,7 @@ const App: React.FC = () => {
           <TechScroll />
           <ComparisonTable />
           <Quiz />
+          <FAQ />
         </main>
       ) : (
         <PremiumPage />

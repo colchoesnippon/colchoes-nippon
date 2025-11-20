@@ -118,25 +118,25 @@ const PremiumPage: React.FC = () => {
         id: 'overview',
         title: "Visão Global", 
         desc: "Design imponente que redefine o quarto.",
-        img: "https://picsum.photos/1200/800?grayscale&random=10" 
+        img: "https://colchoesnippon.com.br/wp-content/uploads/2025/05/colchao-magnetico-nippon-massageador-linha-premium-quantico-nipponflex.jpg" 
     },
     { 
         id: 'side',
         title: "Perfil 40cm", 
         desc: "Altura robusta com Super Pillow Top Único.",
-        img: "https://picsum.photos/1200/800?grayscale&random=11" 
+        img: "https://colchoesnippon.com.br/wp-content/uploads/2025/05/colchao-magnetico-detalhe-nippon-massageador-linha-premium-quantico-nipponflex.jpg" 
     },
     { 
         id: 'texture',
         title: "Linho Bouclê", 
         desc: "Acabamento de toque suave e visual sofisticado.",
-        img: "https://picsum.photos/1200/800?grayscale&random=12" 
+        img: "https://colchoesnippon.com.br/wp-content/uploads/2025/05/colchao-magnetico-fitilho-nippon-massageador-linha-premium-quantico-nipponflex.jpg" 
     },
     { 
         id: 'interface',
         title: "Interface Smart", 
         desc: "Tecnologia embarcada com display LCD e App.",
-        img: "https://picsum.photos/1200/800?grayscale&random=13" 
+        img: "https://colchoesnippon.com.br/wp-content/uploads/2025/05/colchao-magnetico-controle-nippon-massageador-linha-premium-quantico-nipponflex.jpg" 
     }
   ];
 
