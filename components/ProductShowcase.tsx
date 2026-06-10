@@ -28,7 +28,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
       name: "Linha Premium",
       tagline: "A excelência absoluta.",
       height: "40 cm",
-      price: "R$ 9.990",
+      price: "R$ 11.990",
       features: [
         "Máximo luxo, tecnologia e exclusividade",
         "Suporta até 440kg por casal",

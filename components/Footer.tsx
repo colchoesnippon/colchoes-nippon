@@ -48,9 +48,9 @@ const Footer: React.FC = () => {
                       São José dos Pinhais – PR, 83040-260, Brasil
                     </span>
                  </a>
-                 <a href="tel:+5541991844305" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group/link">
+                 <a href="tel:+5541991987303" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group/link">
                     <Phone className="text-zinc-600 group-hover/link:text-amber-500 transition-colors" size={20} />
-                    <span className="text-sm font-medium">41 99184-4305</span>
+                    <span className="text-sm font-medium">41 99198-7303</span>
                  </a>
                </div>
             </div>

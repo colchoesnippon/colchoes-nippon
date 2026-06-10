@@ -431,7 +431,7 @@ const PremiumPage: React.FC = () => {
                        <p className="text-[11px] text-zinc-500 uppercase tracking-widest font-medium">Modelos Premium a partir de</p>
                        <div className="flex items-baseline gap-1 mt-1">
                          <span className="text-zinc-500 font-semibold text-sm">R$</span>
-                         <span className="text-3xl font-extrabold text-white tracking-tight">9.990</span>
+                         <span className="text-3xl font-extrabold text-white tracking-tight">11.990</span>
                          <span className="text-xs text-zinc-500 ml-1.5 font-medium">consulte parcelamento</span>
                        </div>
                        <p className="text-[11px] text-zinc-400 mt-3 leading-relaxed border-t border-zinc-800/80 pt-2.5 flex items-start gap-2">
