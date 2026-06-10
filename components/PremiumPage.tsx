@@ -118,17 +118,17 @@ const PremiumPage: React.FC = () => {
         id: 'overview',
         title: "Visão Global", 
         desc: "Design imponente que redefine o quarto.",
-        img: "https://colchoesnippon.com.br/wp-content/uploads/2025/05/colchao-magnetico-nippon-massageador-linha-premium-quantico-nipponflex.jpg" 
+        img: "https://colchoesnippon.com.br/wp-content/uploads/2026/04/nova-capa-colchao-magnetico-massageador-preco-nippon-flex-colchoes-queen-nippon-king.jpg" 
     },
     { 
         id: 'side',
-        title: "Perfil 40cm", 
+        title: "Altura 40cm", 
         desc: "Altura robusta com Super Pillow Top Único.",
-        img: "https://colchoesnippon.com.br/wp-content/uploads/2025/05/colchao-magnetico-detalhe-nippon-massageador-linha-premium-quantico-nipponflex.jpg" 
+        img: "https://colchoesnippon.com.br/wp-content/uploads/2026/06/ESTRUTURA-LINHA-PREMIUM-COLCHOES-NIPPON-FLEX-PRECO-PREMIUM-FIR-MAGNETICO-MASSAGEADOR.jpg" 
     },
     { 
         id: 'texture',
-        title: "Linho Bouclê", 
+        title: "Tecido Premium", 
         desc: "Acabamento de toque suave e visual sofisticado.",
         img: "https://colchoesnippon.com.br/wp-content/uploads/2025/05/colchao-magnetico-fitilho-nippon-massageador-linha-premium-quantico-nipponflex.jpg" 
     },
@@ -136,7 +136,7 @@ const PremiumPage: React.FC = () => {
         id: 'interface',
         title: "Interface Smart", 
         desc: "Tecnologia embarcada com display LCD e App.",
-        img: "https://colchoesnippon.com.br/wp-content/uploads/2025/05/colchao-magnetico-controle-nippon-massageador-linha-premium-quantico-nipponflex.jpg" 
+        img: "https://colchoesnippon.com.br/wp-content/uploads/2026/06/vibro-LINHA-PREMIUM-COLCHOES-NIPPON-FLEX-PRECO-PREMIUM-FIR-MAGNETICO-MASSAGEADOR.jpg" 
     }
   ];
 
@@ -171,7 +171,7 @@ const PremiumPage: React.FC = () => {
             className="relative w-full max-w-4xl mx-auto aspect-[16/7] md:aspect-[16/6] rounded-2xl overflow-hidden shadow-2xl shadow-amber-900/10 group"
           >
             <img 
-              src="https://colchoesnippon.com.br/wp-content/uploads/2025/10/sonolife-colchao-nippon-flex-qual-preco-magnetico-massageador-evolurion-fir-casal-king-fabrica.jpg" 
+              src="https://colchoesnippon.com.br/wp-content/uploads/2026/06/LINHA-PREMIUM-COLCHOES-NIPPON-FLEX-PRECO-PREMIUM-FIR-MAGNETICO-MASSAGEADOR.jpg" 
               alt="Colchão Premium 40cm" 
               className="w-full h-full object-cover opacity-80"
             />
@@ -259,7 +259,7 @@ const PremiumPage: React.FC = () => {
                                 style={{ translateZ: 40 }}
                                 className="absolute bottom-8 left-8 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 pointer-events-none"
                             >
-                                <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Vista Selecionada</p>
+                                <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Linha Premium</p>
                                 <p className="text-white text-lg font-semibold">{galleryItems[activeTab].title}</p>
                             </motion.div>
 
@@ -420,6 +420,27 @@ const PremiumPage: React.FC = () => {
             {/* Form Section - Sticky on Desktop */}
             <div className="flex-1 md:max-w-md">
                <div className="sticky top-24 bg-zinc-900/80 backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-2xl shadow-amber-900/10">
+                   {/* Bloco de Preço Premium e Transparência */}
+                   <div className="mb-6 pb-6 border-b border-zinc-800/80 space-y-3">
+                     <div className="flex items-baseline justify-between font-sans">
+                       <span className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Investimento Estimado</span>
+                       <span className="text-[10px] text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Alta Tecnologia</span>
+                     </div>
+                     <div className="bg-black/40 border border-zinc-800/50 p-4 rounded-xl relative overflow-hidden">
+                       <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-xl pointer-events-none" />
+                       <p className="text-[11px] text-zinc-500 uppercase tracking-widest font-medium">Modelos Premium a partir de</p>
+                       <div className="flex items-baseline gap-1 mt-1">
+                         <span className="text-zinc-500 font-semibold text-sm">R$</span>
+                         <span className="text-3xl font-extrabold text-white tracking-tight">9.990</span>
+                         <span className="text-xs text-zinc-500 ml-1.5 font-medium">consulte parcelamento</span>
+                       </div>
+                       <p className="text-[11px] text-zinc-400 mt-3 leading-relaxed border-t border-zinc-800/80 pt-2.5 flex items-start gap-2">
+                         <Info size={14} className="text-amber-500 flex-shrink-0 mt-0.5" />
+                         <span>Os valores variam conforme o tamanho, modelo, tecnologias aplicadas e itens inclusos, como box e cabeceira.</span>
+                       </p>
+                     </div>
+                   </div>
+
                   <div className="mb-6 pb-6 border-b border-white/5">
                     <h3 className="text-2xl font-bold text-white mb-2">Receber Oferta Premium</h3>
                     <p className="text-gray-400 text-sm">

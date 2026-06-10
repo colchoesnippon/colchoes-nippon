@@ -36,7 +36,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
         "Suporta 440kg (Casal)"
       ],
       highlight: true,
-      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/09/colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
+      img: "https://colchoesnippon.com.br/wp-content/uploads/2026/06/LINHA-PREMIUM-COLCHOES-NIPPON-FLEX-PRECO-PREMIUM-FIR-MAGNETICO-MASSAGEADOR.jpg",
       color: "from-amber-700/20 to-amber-900/5",
       borderColor: "border-amber-500/30"
     },
