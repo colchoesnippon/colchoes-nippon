@@ -4,7 +4,7 @@ import { Star, ShieldCheck, ChevronLeft, ChevronRight, MousePointerClick } from 
 import { MattressLine } from '../types';
 
 interface ProductShowcaseProps {
-  onNavigate: (view: 'home' | 'premium') => void;
+  onNavigate: (view: 'home' | 'premium' | 'plus') => void;
 }
 
 const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
@@ -119,6 +119,8 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
                 onClick={() => {
                   if (line.id === MattressLine.PREMIUM) {
                     onNavigate('premium');
+                  } else if (line.id === MattressLine.PLUS) {
+                    onNavigate('plus');
                   } else {
                     const quizSection = document.getElementById('quiz');
                     if (quizSection) {

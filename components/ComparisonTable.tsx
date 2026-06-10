@@ -31,7 +31,7 @@ const ComparisonTable: React.FC = () => {
               <TableRow label="Garantia" val1="10 Anos" val2="10 Anos" val3="5 Anos" />
               <TableRow 
                 label="Preço a partir de" 
-                val1={<span className="text-amber-400 font-bold text-base">R$ 9.990</span>} 
+                val1={<span className="text-amber-400 font-bold text-base">R$ 11.990</span>} 
                 val2={<span className="text-white font-semibold text-base">R$ 6.990</span>} 
                 val3={<span className="text-white font-semibold text-base">R$ 3.990</span>} 
               />

@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { Smartphone, Menu, ChevronLeft } from 'lucide-react';
 
 interface NavbarProps {
-  currentView: 'home' | 'premium';
-  onNavigate: (view: 'home' | 'premium') => void;
+  currentView: 'home' | 'premium' | 'plus';
+  onNavigate: (view: 'home' | 'premium' | 'plus') => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
     >
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          {currentView === 'premium' && (
+          {currentView !== 'home' && (
             <button 
               onClick={() => onNavigate('home')}
               className="text-gray-400 hover:text-white transition-colors flex items-center text-sm"
@@ -42,7 +42,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
             className="text-xl font-semibold tracking-tight text-white cursor-pointer" 
             onClick={() => onNavigate('home')}
           >
-            Nippon {currentView === 'premium' && <span className="text-amber-500 text-sm font-normal ml-2">Premium</span>}
+            Nippon 
+            {currentView === 'premium' && <span className="text-amber-500 text-sm font-normal ml-2">Premium</span>}
+            {currentView === 'plus' && <span className="text-zinc-400 text-sm font-normal ml-2">Plus</span>}
           </div>
         </div>
         
