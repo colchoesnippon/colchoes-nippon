@@ -10,16 +10,17 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import PremiumPage from './components/PremiumPage';
 import PlusPage from './components/PlusPage';
+import AmericanPage from './components/AmericanPage';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<'home' | 'premium' | 'plus'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'premium' | 'plus' | 'american'>('home');
 
   // Reset scroll when view changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentView]);
 
-  const navigateTo = (view: 'home' | 'premium' | 'plus') => {
+  const navigateTo = (view: 'home' | 'premium' | 'plus' | 'american') => {
     setCurrentView(view);
   };
 
@@ -39,8 +40,10 @@ const App: React.FC = () => {
         </main>
       ) : currentView === 'premium' ? (
         <PremiumPage />
-      ) : (
+      ) : currentView === 'plus' ? (
         <PlusPage />
+      ) : (
+        <AmericanPage />
       )}
       
       <Footer />

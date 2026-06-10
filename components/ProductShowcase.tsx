@@ -4,7 +4,7 @@ import { Star, ShieldCheck, ChevronLeft, ChevronRight, MousePointerClick } from 
 import { MattressLine } from '../types';
 
 interface ProductShowcaseProps {
-  onNavigate: (view: 'home' | 'premium' | 'plus') => void;
+  onNavigate: (view: 'home' | 'premium' | 'plus' | 'american') => void;
 }
 
 const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
@@ -121,6 +121,8 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
                     onNavigate('premium');
                   } else if (line.id === MattressLine.PLUS) {
                     onNavigate('plus');
+                  } else if (line.id === MattressLine.AMERICAN) {
+                    onNavigate('american');
                   } else {
                     const quizSection = document.getElementById('quiz');
                     if (quizSection) {

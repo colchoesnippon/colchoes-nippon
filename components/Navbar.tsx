@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { Smartphone, Menu, ChevronLeft } from 'lucide-react';
 
 interface NavbarProps {
-  currentView: 'home' | 'premium' | 'plus';
-  onNavigate: (view: 'home' | 'premium' | 'plus') => void;
+  currentView: 'home' | 'premium' | 'plus' | 'american';
+  onNavigate: (view: 'home' | 'premium' | 'plus' | 'american') => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
@@ -44,7 +44,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
           >
             Nippon 
             {currentView === 'premium' && <span className="text-amber-500 text-sm font-normal ml-2">Premium</span>}
-            {currentView === 'plus' && <span className="text-zinc-400 text-sm font-normal ml-2">Plus</span>}
+            {currentView === 'plus' && <span className="text-amber-500 text-sm font-normal ml-2">Plus</span>}
+            {currentView === 'american' && <span className="text-amber-500 text-sm font-normal ml-2">American</span>}
           </div>
         </div>
         

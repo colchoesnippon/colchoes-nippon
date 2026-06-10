@@ -2,5 +2,5 @@
   "name": "Nippon Premium",
   "description": "A luxury landing page for high-tech therapeutic mattresses, inspired by Apple's design aesthetic.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

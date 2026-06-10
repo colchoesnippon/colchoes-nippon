@@ -22,13 +22,15 @@ const ComparisonTable: React.FC = () => {
             <tbody className="text-sm">
               <TableRow label="Altura" val1="40 cm" val2="32 cm" val3="28 cm" />
               <TableRow label="Pillow Top" val1="Super Único" val2="Único" val3="Integrado" />
-              <TableRow label="Motores de Massagem" val1="4 (Big Premium)" val2="4 (Big)" val3="Vibroterapia" />
+              <TableRow label="Motores de Massagem" val1="4 Motores Big Premium" val2="4 Motores Big" val3="6 Motores Tradicionais" />
               <TableRow label="Energia Magnética" val1={<CheckIcon />} val2={<CheckIcon />} val3={<CheckIcon />} />
               <TableRow label="Infravermelho Longo" val1={<CheckIcon />} val2={<CheckIcon />} val3={<CheckIcon />} />
+              <TableRow label="Pastilhas EVI Diamond" val1={<CheckIcon />} val2={<CheckIcon />} val3={<MinusIcon />} />
+              <TableRow label="Pastilhas X-Ions" val1={<CheckIcon />} val2={<CheckIcon />} val3={<MinusIcon />} />
               <TableRow label="Controle via App" val1={<CheckIcon />} val2={<CheckIcon />} val3={<MinusIcon />} />
               <TableRow label="Comando de Voz" val1={<CheckIcon />} val2={<MinusIcon />} val3={<MinusIcon />} />
               <TableRow label="Suporte de Peso (Casal)" val1="440 kg" val2="320 kg" val3="240 kg" />
-              <TableRow label="Garantia" val1="10 Anos" val2="10 Anos" val3="5 Anos" />
+              <TableRow label="Garantia" val1="10 Anos" val2="10 Anos" val3="10 Anos (Estrutural)" />
               <TableRow 
                 label="Preço a partir de" 
                 val1={<span className="text-amber-400 font-bold text-base">R$ 11.990</span>} 
