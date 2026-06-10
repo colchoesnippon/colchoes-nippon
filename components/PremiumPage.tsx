@@ -442,9 +442,9 @@ const PremiumPage: React.FC = () => {
                    </div>
 
                   <div className="mb-6 pb-6 border-b border-white/5">
-                    <h3 className="text-2xl font-bold text-white mb-2">Receber Oferta Premium</h3>
-                    <p className="text-gray-400 text-sm">
-                      Garanta condições exclusivas para o modelo de 40cm.
+                    <h3 className="text-2xl font-bold text-white mb-2 font-sans tracking-tight">Atendimento & Cotação Personalizada</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      Receba uma consultoria exclusiva com um especialista para configurar o seu sistema de sono sob medida.
                     </p>
                   </div>
 
@@ -497,7 +497,7 @@ const PremiumPage: React.FC = () => {
                       <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
                       
                       <span className="relative flex items-center justify-center gap-2">
-                         Solicitar Tabela de Preços <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform"/>
+                         Solicitar Cotação Personalizada <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform"/>
                       </span>
                     </button>
                   </form>
@@ -522,7 +522,7 @@ const PremiumPage: React.FC = () => {
           >
              <div className="bg-zinc-900/95 backdrop-blur-xl border border-amber-500/30 p-2 pr-3 pl-6 rounded-full shadow-2xl shadow-amber-900/50 flex items-center justify-between gap-3 md:gap-6 pointer-events-auto max-w-md w-full ring-1 ring-white/10">
                <div className="flex flex-col">
-                  <span className="text-amber-500 text-[10px] font-bold uppercase tracking-wider leading-tight">Oferta Limitada</span>
+                  <span className="text-amber-500 text-[10px] font-bold uppercase tracking-wider leading-tight">Edição Exclusiva</span>
                   <span className="text-white font-bold text-sm">Premium 40cm</span>
                </div>
                <button 
@@ -530,7 +530,7 @@ const PremiumPage: React.FC = () => {
                   className="relative overflow-hidden bg-[#F59E0B] text-black font-bold py-2.5 px-5 rounded-full text-sm flex items-center gap-2 shadow-[0_0_15px_rgba(245,158,11,0.5)] hover:shadow-[0_0_25px_rgba(245,158,11,0.8)] transition-all transform hover:scale-105 active:scale-95 flex-shrink-0"
                >
                   <span className="absolute inset-0 bg-white/20 animate-pulse"></span>
-                  <span className="relative flex items-center gap-2">Ver Preço <ArrowDown size={16} /></span>
+                  <span className="relative flex items-center gap-2">Solicitar Cotação <ArrowDown size={16} /></span>
                </button>
             </div>
           </motion.div>

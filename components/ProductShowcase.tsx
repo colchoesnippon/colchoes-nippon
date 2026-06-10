@@ -28,12 +28,13 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
       name: "Linha Premium",
       tagline: "A excelência absoluta.",
       height: "40 cm",
+      price: "R$ 9.990",
       features: [
-        "Super Pillow Top Único",
-        "EVI Diamond & X-Ions",
-        "Comando de Voz & App",
-        "4 Motores Big Premium",
-        "Suporta 440kg (Casal)"
+        "Máximo luxo, tecnologia e exclusividade",
+        "Suporta até 440kg por casal",
+        "Todas as terapias exclusivas da Nippon",
+        "Vibromassagem Premium com Alexa e App",
+        "Experiência premium completa"
       ],
       highlight: true,
       img: "https://colchoesnippon.com.br/wp-content/uploads/2026/06/LINHA-PREMIUM-COLCHOES-NIPPON-FLEX-PRECO-PREMIUM-FIR-MAGNETICO-MASSAGEADOR.jpg",
@@ -41,36 +42,20 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
       borderColor: "border-amber-500/30"
     },
     {
-      id: MattressLine.DIAMOND,
-      name: "Linha Diamond",
-      tagline: "Robustez e luxo.",
-      height: "40 cm",
-      features: [
-        "Pillow Top Duplo",
-        "Infravermelho & Magnético",
-        "Display LCD & Bluetooth",
-        "4 Motores Big Premium",
-        "Suporta 440kg (Casal)"
-      ],
-      highlight: false,
-      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/09/diamond-colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
-      color: "from-slate-700/20 to-slate-900/5",
-      borderColor: "border-white/10"
-    },
-    {
       id: MattressLine.PLUS,
       name: "Linha Plus",
       tagline: "O equilíbrio perfeito.",
       height: "32 cm",
+      price: "R$ 6.990",
       features: [
-        "Pillow Top Único",
-        "Terapia Magnética",
-        "Display LCD",
-        "4 Motores Big",
-        "Suporta 320kg (Casal)"
+        "Mais tecnologia e terapias integradas",
+        "Suporta até 320kg por casal",
+        "Ímãs + Infravermelho + EVI Diamond + X-Ions",
+        "Vibromassagem Premium com Bluetooth",
+        "Equilíbrio entre conforto e tecnologia"
       ],
       highlight: false,
-      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/09/plus-colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
+      img: "https://colchoesnippon.com.br/wp-content/uploads/2026/06/LINHA-plus-COLCHOES-NIPPON-FLEX-PRECO-PREMIUM-FIR-MAGNETICO-MASSAGEADOR.jpg",
       color: "from-zinc-700/20 to-zinc-900/5",
       borderColor: "border-white/10"
     },
@@ -79,33 +64,17 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
       name: "Linha American",
       tagline: "Desempenho premium.",
       height: "28 cm",
+      price: "R$ 3.990",
       features: [
-        "Vibroterapia Essencial",
-        "Energia Quântica",
-        "Cromoterapia",
-        "Excelente custo-benefício",
-        "Suporta 280kg (Casal)"
+        "Melhor custo-benefício",
+        "Suporta até 240kg por casal",
+        "Ímãs + Infravermelho Longo",
+        "Vibromassagem com 6 motores",
+        "Conforto avançado e economia"
       ],
       highlight: false,
-      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/09/american-colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
+      img: "https://colchoesnippon.com.br/wp-content/uploads/2026/06/LINHA-american-COLCHOES-NIPPON-FLEX-PRECO-PREMIUM-FIR-MAGNETICO-MASSAGEADOR.jpg",
       color: "from-stone-700/20 to-stone-900/5",
-      borderColor: "border-white/10"
-    },
-    {
-      id: MattressLine.SMART,
-      name: "Linha Smart",
-      tagline: "Tecnologia essencial.",
-      height: "25 cm",
-      features: [
-        "Massagem Inteligente",
-        "Densidade Progressiva",
-        "Magnetismo Terapêutico",
-        "Controle Simplificado",
-        "Suporta 240kg (Casal)"
-      ],
-      highlight: false,
-      img: "https://colchoesnippon.com.br/wp-content/uploads/2025/11/linha-smart-colchao-nipponflex-king-qual-preco-magnetico-massageador-evolurion-fir-casal-casal-fabrica.jpg",
-      color: "from-gray-700/20 to-gray-900/5",
       borderColor: "border-white/10"
     }
   ];
@@ -123,7 +92,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
             Escolha sua <span className="text-gray-500">Performance.</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Cinco níveis de engenharia avançada. Uma única missão: o sono perfeito.
+            Três níveis de engenharia avançada. Uma única missão: o sono perfeito.
           </p>
         </motion.div>
 
@@ -147,7 +116,16 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
             {lines.map((line, index) => (
               <motion.div
                 key={line.id}
-                onClick={() => line.id === MattressLine.PREMIUM ? onNavigate('premium') : null}
+                onClick={() => {
+                  if (line.id === MattressLine.PREMIUM) {
+                    onNavigate('premium');
+                  } else {
+                    const quizSection = document.getElementById('quiz');
+                    if (quizSection) {
+                      quizSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }}
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -155,8 +133,8 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
                 className={`
                   relative flex-shrink-0 w-[85vw] md:w-[380px] snap-center
                   rounded-3xl overflow-hidden border ${line.borderColor}
-                  bg-zinc-900/30 backdrop-blur-sm transition-transform duration-500
-                  ${line.highlight ? 'cursor-pointer hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(245,158,11,0.2)]' : ''}
+                  bg-zinc-900/30 backdrop-blur-sm transition-transform duration-500 cursor-pointer hover:scale-[1.02]
+                  ${line.highlight ? 'hover:shadow-[0_0_30px_rgba(245,158,11,0.2)]' : 'hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]'}
                 `}
               >
                  {/* Background Gradient */}
@@ -184,13 +162,11 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
                         alt={line.name} 
                         className="w-full h-full object-cover transition-transform duration-700 hover:scale-110 opacity-90 hover:opacity-100"
                       />
-                      {line.highlight && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] opacity-0 hover:opacity-100 transition-opacity duration-300">
-                           <span className="flex items-center gap-2 text-white text-sm font-medium border border-white/30 px-4 py-2 rounded-full bg-black/50">
-                              <MousePointerClick size={16} /> Ver Detalhes
-                           </span>
-                        </div>
-                      )}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] opacity-0 hover:opacity-100 transition-opacity duration-300">
+                         <span className="flex items-center gap-2 text-white text-sm font-medium border border-white/30 px-4 py-2 rounded-full bg-black/50">
+                            <MousePointerClick size={16} /> Ver Detalhes
+                         </span>
+                      </div>
                     </div>
 
                     <ul className="space-y-3 mt-auto mb-6">
@@ -203,17 +179,17 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
                     </ul>
 
                     <div className="pt-6 border-t border-white/10 flex items-center justify-between mt-auto">
-                       <div className="flex gap-2 text-gray-500 items-center">
-                          <ShieldCheck size={16} />
-                          <span className="text-xs">10 Anos</span>
+                       <div className="flex flex-col">
+                          <span className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider leading-tight">A partir de</span>
+                          <span className="text-lg font-extrabold text-white tracking-tight">{line.price}</span>
                        </div>
                        {line.highlight ? (
                          <button className="text-amber-400 text-sm font-bold hover:text-amber-300 transition-colors flex items-center gap-1">
-                           Ver Premium <ChevronRight size={14} />
+                           Ver Detalhes <ChevronRight size={14} />
                          </button>
                        ) : (
-                        <span className="text-gray-600 text-sm">
-                          Saiba mais
+                        <span className="text-zinc-400 text-sm font-bold flex items-center gap-1">
+                          Ver Detalhes <ChevronRight size={14} />
                         </span>
                        )}
                     </div>
