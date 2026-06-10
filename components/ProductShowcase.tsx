@@ -62,7 +62,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onNavigate }) => {
     {
       id: MattressLine.AMERICAN,
       name: "Linha American",
-      tagline: "Desempenho premium.",
+      tagline: "Melhor custo-benefício.",
       height: "28 cm",
       price: "R$ 3.990",
       features: [
